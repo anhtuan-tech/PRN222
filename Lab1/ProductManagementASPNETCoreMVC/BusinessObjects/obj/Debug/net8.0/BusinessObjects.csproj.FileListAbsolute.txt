@@ -1,0 +1,14 @@
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\BusinessObjects\bin\Debug\net8.0\BusinessObjects.deps.json
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\BusinessObjects\bin\Debug\net8.0\BusinessObjects.runtimeconfig.json
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\BusinessObjects\bin\Debug\net8.0\BusinessObjects.dll
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\BusinessObjects\bin\Debug\net8.0\BusinessObjects.pdb
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\BusinessObjects\obj\Debug\net8.0\BusinessObjects.csproj.AssemblyReference.cache
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\BusinessObjects\obj\Debug\net8.0\BusinessObjects.GeneratedMSBuildEditorConfig.editorconfig
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\BusinessObjects\obj\Debug\net8.0\BusinessObjects.AssemblyInfoInputs.cache
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\BusinessObjects\obj\Debug\net8.0\BusinessObjects.AssemblyInfo.cs
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\BusinessObjects\obj\Debug\net8.0\BusinessObjects.csproj.CoreCompileInputs.cache
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\BusinessObjects\obj\Debug\net8.0\BusinessObjects.dll
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\BusinessObjects\obj\Debug\net8.0\refint\BusinessObjects.dll
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\BusinessObjects\obj\Debug\net8.0\BusinessObjects.pdb
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\BusinessObjects\obj\Debug\net8.0\BusinessObjects.genruntimeconfig.cache
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\BusinessObjects\obj\Debug\net8.0\ref\BusinessObjects.dll

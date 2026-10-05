@@ -1,0 +1,39 @@
+@page
+@model WebManagement.Pages.EditModel
+@{
+    ViewData["Title"] = "Edit User";
+}
+
+<h2>Edit User</h2>
+
+<form method="post" class="mt-4" style="max-width: 500px;">
+    <input type="hidden" asp-for="UserEntity.Id" />
+    
+    <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input asp-for="UserEntity.UserName" class="form-control" required />
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Full Name</label>
+        <input asp-for="UserEntity.FullName" class="form-control" required />
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input asp-for="UserEntity.Email" type="email" class="form-control" required />
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input asp-for="UserEntity.Password" type="password" class="form-control" placeholder="Enter new password if changing" />
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Role</label>
+        <select asp-for="UserEntity.Role" asp-items="Model.RoleOptions" class="form-select"></select>
+    </div>
+    
+    <button type="submit" class="btn btn-success">Save Changes</button>
+    <a asp-page="Index" class="btn btn-secondary ms-2">Back to List</a>
+</form>

@@ -1,0 +1,81 @@
+@page
+@model WebManagement.Pages.IndexModel
+@{
+    ViewData["Title"] = "Management Page";
+}
+
+<h2>User Management</h2>
+<p><a asp-page="Create" class="btn btn-primary">Create New User</a></p>
+
+@Html.AntiForgeryToken()
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>No.</th>
+            <th>Username</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody id="userTableBody">
+        @{
+            int index = 1;
+        }
+        @foreach (var user in Model.Users)
+        {
+            <tr id="row-@user.Id">
+                <td>@(index++)</td>
+                <td>@user.UserName</td>
+                <td>@user.FullName</td>
+                <td>@user.Email</td>
+                <td>@user.Role</td>
+                <td>
+                    <a asp-page="Edit" asp-route-id="@user.Id" class="btn btn-warning btn-sm">Edit</a>
+                    <button class="btn btn-danger btn-sm" onclick="deleteUser(@user.Id)">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        // Thiết lập kết nối thời gian thực SignalR
+        const connection = new signalR.HubConnectionBuilder().withUrl("/userHub").build();
+
+        connection.on("ReceiveUpdate", function () {
+        location.reload(); // Tự động đồng bộ reload danh sách khi có thay đổi dữ liệu từ tab khác
+        });
+
+        connection.start().catch(err => console.error(err.toString()));
+
+        // Thực hiện xóa dòng bằng AJAX ngay lập tức không reload trang
+        function deleteUser(id) {
+        if (confirm("Do you really want to delete this user?")) {
+        $.ajax({
+        url: '?handler=Delete',
+        type: 'POST',
+        data: { id: id },
+        headers: {
+        "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val()
+        },
+        success: function (response) {
+        if (response.success) {
+        $("#row-" + id).remove(); // Xóa bỏ dòng tr trên giao diện ngay tức thì
+        // Kích hoạt SignalR cập nhật cho toàn hệ thống
+        connection.invoke("SendUpdateNotification").catch(err => console.error(err.toString()));
+        } else {
+        alert("Error occurred while deleting!");
+        }
+        }
+        });
+        }
+        }
+    </script>
+}

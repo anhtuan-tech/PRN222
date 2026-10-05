@@ -1,0 +1,17 @@
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\DataAccessObjects\bin\Debug\net8.0\DataAccessObjects.deps.json
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\DataAccessObjects\bin\Debug\net8.0\DataAccessObjects.runtimeconfig.json
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\DataAccessObjects\bin\Debug\net8.0\DataAccessObjects.dll
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\DataAccessObjects\bin\Debug\net8.0\DataAccessObjects.pdb
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\DataAccessObjects\bin\Debug\net8.0\BusinessObjects.dll
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\DataAccessObjects\bin\Debug\net8.0\BusinessObjects.pdb
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\DataAccessObjects\obj\Debug\net8.0\DataAccessObjects.csproj.AssemblyReference.cache
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\DataAccessObjects\obj\Debug\net8.0\DataAccessObjects.GeneratedMSBuildEditorConfig.editorconfig
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\DataAccessObjects\obj\Debug\net8.0\DataAccessObjects.AssemblyInfoInputs.cache
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\DataAccessObjects\obj\Debug\net8.0\DataAccessObjects.AssemblyInfo.cs
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\DataAccessObjects\obj\Debug\net8.0\DataAccessObjects.csproj.CoreCompileInputs.cache
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\DataAccessObjects\obj\Debug\net8.0\DataAcce.79975846.Up2Date
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\DataAccessObjects\obj\Debug\net8.0\DataAccessObjects.dll
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\DataAccessObjects\obj\Debug\net8.0\refint\DataAccessObjects.dll
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\DataAccessObjects\obj\Debug\net8.0\DataAccessObjects.pdb
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\DataAccessObjects\obj\Debug\net8.0\DataAccessObjects.genruntimeconfig.cache
+D:\SU26 07\PRN222\Lab1\ProductManagementASPNETCoreMVC\DataAccessObjects\obj\Debug\net8.0\ref\DataAccessObjects.dll

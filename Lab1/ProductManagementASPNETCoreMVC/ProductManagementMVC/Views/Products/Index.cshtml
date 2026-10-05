@@ -1,0 +1,138 @@
+@model IEnumerable<BusinessObjects.Product>
+
+@{
+    ViewData["Title"] = "Inventory";
+}
+
+<!-- Design Read:
+Reading this as: Product List interface for ASP.NET Core MVC web application, with a premium editorial-style minimalist language, leaning toward Tailwind CSS + warm monochrome palette + crisp typography.
+-->
+
+<div class="space-y-12 animate-fade-in">
+    <!-- Page Header & Action -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-borderMuted">
+        <div class="space-y-2">
+            <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-mutedGray">Catalogue</span>
+            <h1 class="font-serif text-4xl md:text-5xl font-normal tracking-tighter leading-none text-charcoal">
+                Store Inventory
+            </h1>
+            <p class="text-sm text-mutedGray max-w-[65ch]">
+                A real-time overview of current store merchandise, unit pricing, and stock status.
+            </p>
+        </div>
+        <div>
+            <a asp-action="Create" class="inline-flex items-center justify-center px-4 py-2 bg-charcoal text-white text-xs font-semibold rounded-md hover:bg-charcoal/85 active:scale-[0.98] transition-all duration-150">
+                New Product
+            </a>
+        </div>
+    </div>
+
+    <!-- Bento Stats Grid (3 Cells) -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <!-- Card 1: Total Products -->
+        <div class="bg-surface border border-borderMuted rounded-xl p-6 flex flex-col justify-between h-32">
+            <span class="font-mono text-[10px] font-medium uppercase tracking-wider text-mutedGray">Total Products</span>
+            <div class="flex items-baseline gap-2">
+                <span class="font-serif text-3xl font-medium text-charcoal">@Model.Count()</span>
+                <span class="text-xs text-mutedGray">items</span>
+            </div>
+        </div>
+
+        <!-- Card 2: Low Stock Alerts -->
+        <div class="bg-surface border border-borderMuted rounded-xl p-6 flex flex-col justify-between h-32">
+            <span class="font-mono text-[10px] font-medium uppercase tracking-wider text-mutedGray">Stock Alerts</span>
+            <div class="flex items-baseline gap-2">
+                @{
+                    var alertCount = Model.Count(p => p.UnitsInStock == null || p.UnitsInStock < 10);
+                }
+                <span class="font-serif text-3xl font-medium @(alertCount > 0 ? "text-pastelRed-text" : "text-charcoal")">
+                    @alertCount
+                </span>
+                <span class="text-xs text-mutedGray">low or out of stock</span>
+            </div>
+        </div>
+
+        <!-- Card 3: Categories -->
+        <div class="bg-surface border border-borderMuted rounded-xl p-6 flex flex-col justify-between h-32">
+            <span class="font-mono text-[10px] font-medium uppercase tracking-wider text-mutedGray">Active Categories</span>
+            <div class="flex items-baseline gap-2">
+                <span class="font-serif text-3xl font-medium text-charcoal">
+                    @Model.Select(p => p.CategoryId).Distinct().Count()
+                </span>
+                <span class="text-xs text-mutedGray">groups</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table Container -->
+    <div class="bg-surface border border-borderMuted rounded-xl overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full border-collapse">
+                <thead>
+                    <tr class="border-b border-borderMuted bg-canvas/30">
+                        <th class="px-6 py-4 text-left font-mono text-[10.5px] font-semibold uppercase tracking-[0.1em] text-mutedGray w-20">ID</th>
+                        <th class="px-6 py-4 text-left font-mono text-[10.5px] font-semibold uppercase tracking-[0.1em] text-mutedGray">Product Name</th>
+                        <th class="px-6 py-4 text-left font-mono text-[10.5px] font-semibold uppercase tracking-[0.1em] text-mutedGray w-36">Category</th>
+                        <th class="px-6 py-4 text-right font-mono text-[10.5px] font-semibold uppercase tracking-[0.1em] text-mutedGray w-32">Unit Price</th>
+                        <th class="px-6 py-4 text-center font-mono text-[10.5px] font-semibold uppercase tracking-[0.1em] text-mutedGray w-36">Stock Status</th>
+                        <th class="px-6 py-4 text-right font-mono text-[10.5px] font-semibold uppercase tracking-[0.1em] text-mutedGray w-48">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-borderMuted">
+                    @foreach (var item in Model)
+                    {
+                        <tr class="hover:bg-canvas/30 transition-colors">
+                            <td class="px-6 py-4 text-xs font-mono text-mutedGray align-middle">
+                                #@item.ProductId
+                            </td>
+                            <td class="px-6 py-4 text-sm font-medium text-charcoal align-middle">
+                                @item.ProductName
+                            </td>
+                            <td class="px-6 py-4 text-sm align-middle">
+                                <span class="inline-flex items-center px-2 py-0.5 rounded bg-canvas border border-borderMuted text-xs font-mono text-mutedGray">
+                                    @(item.Category?.CategoryName ?? "Unassigned")
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-sm font-mono text-right text-charcoal align-middle font-medium">
+                                @(item.UnitPrice?.ToString("N2") ?? "0.00")
+                            </td>
+                            <td class="px-6 py-4 text-center align-middle">
+                                @if (item.UnitsInStock == null || item.UnitsInStock == 0)
+                                {
+                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-pastelRed-bg text-pastelRed-text border border-pastelRed-text/10">
+                                        Out of stock
+                                    </span>
+                                }
+                                else if (item.UnitsInStock < 10)
+                                {
+                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-pastelYellow-bg text-pastelYellow-text border border-pastelYellow-text/10">
+                                        Low stock (@item.UnitsInStock)
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-pastelGreen-bg text-pastelGreen-text border border-pastelGreen-text/10">
+                                        In stock (@item.UnitsInStock)
+                                    </span>
+                                }
+                            </td>
+                            <td class="px-6 py-4 text-right text-sm align-middle font-medium space-x-3">
+                                <a asp-action="Edit" asp-route-id="@item.ProductId" class="text-xs text-mutedGray hover:text-charcoal transition-colors">
+                                    Edit
+                                </a>
+                                <span class="text-borderMuted font-light">|</span>
+                                <a asp-action="Details" asp-route-id="@item.ProductId" class="text-xs text-mutedGray hover:text-charcoal transition-colors">
+                                    Details
+                                </a>
+                                <span class="text-borderMuted font-light">|</span>
+                                <a asp-action="Delete" asp-route-id="@item.ProductId" class="text-xs text-pastelRed-text hover:text-red-700 transition-colors">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

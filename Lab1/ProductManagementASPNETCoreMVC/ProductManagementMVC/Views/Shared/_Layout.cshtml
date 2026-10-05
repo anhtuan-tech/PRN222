@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Store</title>
+    
+    <!-- Google Fonts: Geist Sans, Instrument Serif, Geist Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600&family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        canvas: '#FBFBFA', // warm bone/off-white background
+                        surface: '#FFFFFF', // primary card/table surface
+                        borderMuted: '#EAEAEA',
+                        charcoal: '#111111',
+                        mutedGray: '#787774',
+                        // Spot pastels
+                        pastelRed: { bg: '#FDEBEC', text: '#9F2F2D' },
+                        pastelBlue: { bg: '#E1F3FE', text: '#1F6C9F' },
+                        pastelGreen: { bg: '#EDF3EC', text: '#346538' },
+                        pastelYellow: { bg: '#FBF3DB', text: '#956400' }
+                    },
+                    fontFamily: {
+                        sans: ['"Geist Sans"', '"SF Pro Display"', '"Helvetica Neue"', 'sans-serif'],
+                        serif: ['"Instrument Serif"', '"Lyon Text"', '"Newsreader"', '"Playfair Display"', 'serif'],
+                        mono: ['"Geist Mono"', '"SF Mono"', '"JetBrains Mono"', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/css">
+        body {
+            font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+        }
+    </style>
+</head>
+<body class="bg-canvas text-charcoal font-sans antialiased min-h-screen flex flex-col selection:bg-pastelBlue-bg selection:text-pastelBlue-text">
+    <header class="h-16 flex items-center justify-between border-b border-borderMuted px-6 md:px-8 bg-surface/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="flex items-center gap-8">
+            <a class="font-serif text-xl tracking-tight hover:opacity-85 transition-opacity" asp-controller="Products" asp-action="Index">
+                Store
+            </a>
+            <nav class="hidden md:flex items-center gap-6">
+                <a class="text-sm font-medium text-charcoal transition-colors hover:text-charcoal/85" asp-controller="Products" asp-action="Index">Products</a>
+                <a class="text-sm font-medium text-mutedGray transition-colors hover:text-charcoal" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </nav>
+        </div>
+        <div class="flex items-center gap-4">
+            <kbd class="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 border border-borderMuted rounded bg-canvas font-mono text-[10px] text-mutedGray shadow-sm">
+                <span>⌘</span><span>K</span>
+            </kbd>
+        </div>
+    </header>
+
+    <main role="main" class="flex-grow w-full max-w-7xl mx-auto px-6 md:px-8 py-12">
+        @RenderBody()
+    </main>
+
+    <footer class="border-t border-borderMuted py-8 bg-surface">
+        <div class="max-w-7xl mx-auto px-6 md:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-mutedGray">
+            <div>
+                &copy; @DateTime.Now.Year Store. All rights reserved.
+            </div>
+            <div class="flex items-center gap-4">
+                <a class="hover:text-charcoal transition-colors" asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
+                <span>&middot;</span>
+                <span class="font-mono">v1.0.0</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

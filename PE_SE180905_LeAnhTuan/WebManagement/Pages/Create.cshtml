@@ -1,0 +1,28 @@
+﻿@page
+@model WebManagement.Pages.CreateModel
+<h2>Create User</h2>
+
+<form method="post">
+    <div class="mb-2">
+        <label>Username</label>
+        <input asp-for="UserEntity.UserName" class="form-control" required />
+    </div>
+    <div class="mb-2">
+        <label>Full Name</label>
+        <input asp-for="UserEntity.FullName" class="form-control" required />
+    </div>
+    <div class="mb-2">
+        <label>Email</label>
+        <input asp-for="UserEntity.Email" type="email" class="form-control" required />
+    </div>
+    <div class="mb-2">
+        <label>Password</label>
+        <input asp-for="UserEntity.Password" type="password" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Role</label>
+        <select asp-for="UserEntity.Role" asp-items="Model.RoleOptions" class="form-control"></select>
+    </div>
+    <button type="submit" class="btn btn-success">Create</button>
+    <a asp-page="Index" class="btn btn-secondary">Back</a>
+</form>
